@@ -3,11 +3,16 @@ body {
 }
 
 .form-wrap {
-    display    : flex;
-    width      : 300px;
-    height     : 100vh;
-    margin     : 0 auto;
-    align-items: center
+    display        : flex;
+    width          : 250px;
+    height         : 100vh;
+    margin         : 0 auto;
+    align-items    : center;
+    justify-content: center;
+
+    .form-main {
+        width: 100%;
+    }
 }
 
 .form-header {
@@ -18,7 +23,7 @@ body {
     .column {
         float    : left;
         font-size: 16px;
-
+        color    : #fff;
     }
 
     span {

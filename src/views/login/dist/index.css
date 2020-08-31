@@ -4,10 +4,14 @@ body {
 
 .form-wrap {
   display: flex;
-  width: 300px;
+  width: 250px;
   height: 100vh;
   margin: 0 auto;
   align-items: center;
+  justify-content: center;
+}
+.form-wrap .form-main {
+  width: 100%;
 }
 
 .form-header {
@@ -18,6 +22,7 @@ body {
 .form-header .column {
   float: left;
   font-size: 16px;
+  color: #fff;
 }
 .form-header span {
   float: right;
