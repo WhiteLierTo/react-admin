@@ -9,7 +9,7 @@ const service = axios.create({
 //请求拦截
 service.interceptors.request.use(
   function (config) {
-    console.log(process.env.REACT_APP_API);
+    console.log(process.env.NODE_ENV);
     // 在发送请求之前做些什么
     return config;
   },

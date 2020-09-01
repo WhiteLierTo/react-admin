@@ -17,7 +17,7 @@ var service = _axios["default"].create({
 
 
 service.interceptors.request.use(function (config) {
-  console.log(process.env.REACT_APP_API); // 在发送请求之前做些什么
+  console.log(process.env.NODE_ENV); // 在发送请求之前做些什么
 
   return config;
 }, function (error) {
