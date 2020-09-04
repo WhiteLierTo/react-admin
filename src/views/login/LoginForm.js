@@ -14,16 +14,19 @@ export default class LoginForm extends Component {
     this.state = {
       username: "",
       password: "",
+      module: "login",
+      loading: false,
     };
   }
   onFinish = (values) => {
+    this.setState({ loading: true });
     Login(values)
-      .then((res) => {
+      .then(() => {
         message.success("登录成功");
-        console.log(res);
+        this.setState({ loading: false });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
+        this.setState({ loading: false });
       });
   };
 
@@ -39,7 +42,7 @@ export default class LoginForm extends Component {
   };
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, module, loading } = this.state;
     return (
       <div>
         <div className="form-main">
@@ -58,7 +61,10 @@ export default class LoginForm extends Component {
                 name="username"
                 onChange={this.changeInput}
                 style={{ width: "100%" }}
-                rules={[{ required: true, message: "邮箱不能为空" }]}
+                rules={[
+                  { required: true, message: "邮箱不能为空" },
+                  { type: "email", message: "邮箱格式不正确" },
+                ]}
               >
                 <Input
                   value={username}
@@ -74,11 +80,14 @@ export default class LoginForm extends Component {
                   value={password}
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   placeholder="请输入密码"
+                  type="password"
                 />
               </Form.Item>
               <Form.Item
                 name="code"
-                rules={[{ required: true, message: "请输入验证码" }]}
+                rules={[
+                  { required: true, message: "请输入长度6位验证码", len: 6 },
+                ]}
               >
                 <Row gutter={13}>
                   <Col span={15}>
@@ -88,7 +97,7 @@ export default class LoginForm extends Component {
                     />
                   </Col>
                   <Col span={9}>
-                    <Code username={username} />
+                    <Code username={username} module={module} />
                   </Col>
                 </Row>
               </Form.Item>
@@ -99,6 +108,7 @@ export default class LoginForm extends Component {
                   htmlType="submit"
                   className="login-form-button"
                   block
+                  loading={loading}
                 >
                   登录
                 </Button>

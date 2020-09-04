@@ -1,0 +1,17 @@
+.layout-wrap {
+    height: 100vh;
+
+    .layout-header {
+        position          : relative;
+        z-index           : 2;
+        height            : 75px;
+        background-color  : #fff;
+        -webkit-box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.1)
+    }
+
+    .layout-main {
+        background-color: #fff;
+        border          : 30px solid #f7f7f7;
+        padding         : 30px;
+    }
+}

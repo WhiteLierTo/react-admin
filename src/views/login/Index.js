@@ -12,7 +12,6 @@ export default class Home extends Component {
   }
 
   switchForm = (value) => {
-    console.log(value);
     this.setState({
       formType: value,
     });
