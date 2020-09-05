@@ -1,13 +1,17 @@
 .logo {
-    display        : flex;
-    align-items    : center;
+    width: 250px;
+    height: 75px;
+    display: flex;
+    margin-left: -50px;
+    align-items: center;
     justify-content: center;
-    height         : 83px;
+    height: 83px;
+    background-color: #001529;
 
     span {
-        display         : block;
-        widows          : 177px;
-        height          : 47px;
-        background-color: #1a1a1a
+        display: block;
+        width: 177px;
+        height: 47px;
+        background-color: #1a2d3f
     }
 }

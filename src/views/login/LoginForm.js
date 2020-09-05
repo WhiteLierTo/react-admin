@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { Form, Input, Button, Row, Col, message } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import "./index.scss";
+import { withRouter } from "react-router-dom";
 
 //API
 import { Login } from "../../api/account";
 //组件
 import Code from "../../components/code/index";
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,9 +22,12 @@ export default class LoginForm extends Component {
   onFinish = (values) => {
     this.setState({ loading: true });
     Login(values)
-      .then(() => {
-        message.success("登录成功");
-        this.setState({ loading: false });
+      .then((res) => {
+        if (res.data.resCode === 0) {
+          message.success("登录成功");
+          this.setState({ loading: false });
+          this.props.history.push("/home");
+        }
       })
       .catch(() => {
         this.setState({ loading: false });
@@ -120,3 +124,5 @@ export default class LoginForm extends Component {
     );
   }
 }
+
+export default withRouter(LoginForm)

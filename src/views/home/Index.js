@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // layout组件
-import Aside from "./components/aside";
+import LayoutAside from "./components/aside";
+import LayoutHeader from "./components/header";
 // css
 import "./layout.scss";
 // antD
@@ -16,11 +17,14 @@ export default class Index extends Component {
   render() {
     return (
       <Layout className="layout-wrap">
-        <Sider width="250px">
-          <Aside />
-        </Sider>
+        <Header className="layout-header">
+          <LayoutHeader />
+        </Header>
+
         <Layout>
-          <Header className="layout-header">头部</Header>
+          <Sider className="layout-side">
+            <LayoutAside />
+          </Sider>
           <Content className="layout-main">内容</Content>
         </Layout>
       </Layout>
