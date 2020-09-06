@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // layout组件
 import LayoutAside from "./components/aside";
 import LayoutHeader from "./components/header";
+import ContainerMain from "../../components/containerMain/Index";
 // css
 import "./layout.scss";
 // antD
@@ -25,7 +26,9 @@ export default class Index extends Component {
           <Sider className="layout-side">
             <LayoutAside />
           </Sider>
-          <Content className="layout-main">内容</Content>
+          <Content className="layout-main">
+            <ContainerMain />
+          </Content>
         </Layout>
       </Layout>
     );

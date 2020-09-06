@@ -8,6 +8,10 @@ import { withRouter } from "react-router-dom";
 import { Login } from "../../api/account";
 //组件
 import Code from "../../components/code/index";
+//加密
+// import CryptoJs from "crypto-js";
+//方法
+import { setToken } from "../../utils/session";
 
 class LoginForm extends Component {
   constructor(props) {
@@ -20,11 +24,19 @@ class LoginForm extends Component {
     };
   }
   onFinish = (values) => {
+    // const { username, password, code } = JSON.parse(JSON.stringify(values));
     this.setState({ loading: true });
+    // const requestData = {
+    //   username,
+    //   password: CryptoJs.MD5(password).toString(), //加密
+    //   code,
+    // };
     Login(values)
       .then((res) => {
         if (res.data.resCode === 0) {
-          message.success("登录成功");
+          const data = res.data.data;
+          message.success(res.data.message);
+          setToken(data.token);
           this.setState({ loading: false });
           this.props.history.push("/home");
         }
@@ -125,4 +137,4 @@ class LoginForm extends Component {
   }
 }
 
-export default withRouter(LoginForm)
+export default withRouter(LoginForm);

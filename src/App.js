@@ -4,6 +4,8 @@ import "./app.scss";
 // import Home from "./views/Home.js";
 import Login from "./views/login/Index";
 import Home from "./views/home/Index";
+//私有组件
+import PrivateRouter from "./components/privateRouter/index";
 
 export default class App extends Component {
   constructor(props) {
@@ -16,8 +18,10 @@ export default class App extends Component {
       <div className="title">
         <BrowserRouter>
           <Switch>
-            <Route component={Login} exact path="/" />
-            <Route component={Home} exact path="/home" />
+            <Route exact render={() => <Login />} path="/" />
+            <PrivateRouter component={Home} path="/home" />
+            {/* <Route exact render={() => <Home />} path="/home" /> */}
+
           </Switch>
         </BrowserRouter>
       </div>
